@@ -27,12 +27,10 @@ class Request
     public function send()
     {
         $options = [
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_URL            => $this->host . '/' . $this->url.'?'.http_build_query($this->queryString),
-          CURLOPT_CUSTOMREQUEST  => $this->method
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL            => $this->host . '/' . $this->url.'?'.http_build_query($this->queryString),
+            CURLOPT_CUSTOMREQUEST  => $this->method
         ];
-
-        var_dump($options);
 
         $ch = curl_init();
 
@@ -42,6 +40,7 @@ class Request
 
         $response = curl_exec($ch);
 
+        var_dump($options);
         var_dump($response);
         curl_close($ch);
 
