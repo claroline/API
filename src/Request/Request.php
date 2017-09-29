@@ -29,7 +29,8 @@ class Request
         $options = [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_URL            => $this->host . '/' . $this->url.'?'.http_build_query($this->queryString),
-            CURLOPT_CUSTOMREQUEST  => $this->method
+            CURLOPT_CUSTOMREQUEST  => $this->method,
+            CURLOPT_POSTFIELDS     => $this->body
         ];
 
         $ch = curl_init();

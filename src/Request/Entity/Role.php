@@ -15,13 +15,8 @@ use Claroline\API\Request\AbstractQuery;
 
 class Role extends AbstractQuery
 {
-    public function model()
+    public function required()
     {
-        return [
-          'id',
-          'name',
-          'translationKey',
-          'limit'
-        ];
+        return ['translationKey'];
     }
 }

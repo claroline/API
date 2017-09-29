@@ -15,11 +15,8 @@ use Claroline\API\Request\AbstractQuery;
 
 class Group extends AbstractQuery
 {
-    public function model()
+    public function required()
     {
-        return [
-          'id',
-          'name'
-        ];
+        return ['name'];
     }
 }

@@ -15,10 +15,11 @@ use Claroline\API\Request\AbstractQuery;
 
 class Workspace extends AbstractQuery
 {
-    public function model()
+    public function required()
     {
         return [
-          'id'
+          'code',
+          'name'
         ];
     }
 }
