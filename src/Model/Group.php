@@ -9,18 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Claroline\API;
+namespace Claroline\API\Model;
 
 use Claroline\Request;
+use Claroline\APIInterface;
 
-class User
+class Group implements APIInterface
 {
-    public function __construct(Request $request, $routes)
+    public function model()
     {
-        $this->request = $request;
-        $this->routes = $routes;
     }
-    
+
     public function get()
     {
     }
