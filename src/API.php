@@ -2,8 +2,7 @@
 
 namespace Claroline\API;
 
-use Claroline\API\Group;
-use Claroline\API\User;
+use Claroline\API\Request\Request;
 
 class API
 {
@@ -11,12 +10,16 @@ class API
     {
         $this->host = $host;
         $this->options = $options;
-        $this->routing = require('./routing.php');
+        //$this->routing = require(__DIR__.'/../config/routing.php');
+        $this->routing = [];
         $this->utilities = new Utilities();
-        $this->managers = $this->utilities->instantiateDirectory(__DIR__ . '/Model');
+        $this->managers = $this->utilities->instantiateDirectory(
+          __DIR__ . '/Request/Entity',
+          [$this->routing, $this->host]
+        );
     }
 
-    public function getApiManager($object)
+    public function getManager($object)
     {
         return $this->managers[$object];
     }

@@ -9,30 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Claroline\API\Model;
+namespace Claroline\API\Entity;
 
-use Claroline\Request;
-use Claroline\APIInterface;
+use Claroline\API\Request\AbstractQuery;
 
-class Role implements APIInterface
+class User extends AbstractQuery
 {
     public function model()
     {
-    }
-
-    public function get()
-    {
-    }
-
-    public function create()
-    {
-    }
-
-    public function delete()
-    {
-    }
-
-    public function edit()
-    {
+        return [
+          'id',
+          'name'
+        ];
     }
 }
