@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Claroline\API\Utilities;
+
+$utilities = new Utilities();
+$application = new Application();
+$commands = $utilities->instantiateDirectory(__DIR__ . '/../src/Command');
+
+foreach ($commands as $command) {
+    $application->add($command);
+}
+
+$application->run();

@@ -5,6 +5,7 @@
 		"symfony/yaml": "~2.6"
 	},
 	"autoload": {
-		"psr-4": { "": "src/" }
-	}
+		"psr-4": { "Claroline\\API\\": "src/" }
+	},
+  "bin": ["bin/api"]
 }

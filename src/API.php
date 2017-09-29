@@ -13,7 +13,7 @@ class API
         $this->options = $options;
         $this->routing = require('./routing.php');
         $this->utilities = new Utilities();
-        $this->managers = $this->utilities->instantiateDirectory(__DIR__ . DIRECTORY_SEPARATOR . 'Model');
+        $this->managers = $this->utilities->instantiateDirectory(__DIR__ . '/Model');
     }
 
     public function getApiManager($object)
