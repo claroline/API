@@ -39,22 +39,25 @@ abstract class AbstractQuery implements EntityInterface
         return $request->send();
     }
 
-    public function create(...$args)
+    public function create($data)
     {
-        $request = new Request($this->endPoint, 'POST', $this->host, [], json_encode($this->getObjectFromArgs($args)));
+        $request = new Request($this->endPoint, 'POST', $this->host, [], json_encode($data));
 
         return $request->send();
     }
 
-    public function edit(...$args)
+    public function update($data)
     {
-        $request = new Request($this->endPoint, 'PUT', $this->host, [], json_encode($this->getObjectFromArgs($args)));
+        $request = new Request($this->endPoint.$data->id, 'PUT', $this->host, [], json_encode($data));
 
         return $request->send();
     }
 
     public function delete($id)
     {
+        $request = new Request($this->endPoint.'?ids[]='.$data->id, 'DELETE', $this->host);
+
+        return $request->send();
     }
 
     public function optional()
@@ -65,18 +68,5 @@ abstract class AbstractQuery implements EntityInterface
     public function getNormalizedName()
     {
         return substr(strtolower(get_class($this)), strrpos(strtolower(get_class($this)), '\\') + 1);
-    }
-
-    protected function getObjectFromArgs($args)
-    {
-        $obj = new \stdClass();
-
-        foreach ($this->required() as $index => $prop) {
-            $obj->$prop = $args[$index];
-        }
-
-        //handle optional properties here
-
-        return $obj;
     }
 }

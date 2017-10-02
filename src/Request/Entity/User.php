@@ -15,12 +15,16 @@ use Claroline\API\Request\AbstractQuery;
 
 class User extends AbstractQuery
 {
-    public function required()
+    public function properties()
     {
         return [
-          'id' => false,
-          'username' => true,
-          '...' => true
+          'id',
+          'firstName',
+          'lastName',
+          'username',
+          'plainPassword',
+          'administrativeCode',
+          'mail'
         ];
     }
 }

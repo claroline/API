@@ -14,13 +14,10 @@ namespace Claroline\API\Request;
 interface EntityInterface
 {
     //currently a php array but it should be replaced by the json-schema later.
-    public function required();
-
-    //currently a php array but it should be replaced by the json-schema later.
-    public function optional();
+    public function properties();
 
     public function list($page, $limit, array $filters = []);
-    public function create(...$args);
+    public function create($data);
     public function delete($id);
-    public function edit(...$args);
+    public function update($data);
 }
