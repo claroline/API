@@ -9,12 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Claroline\API\Entity;
+namespace Claroline\API\Request\Entity;
 
 use Claroline\API\Request\AbstractQuery;
+use Claroline\API\Request\Model\HasOrganization;
 
 class Workspace extends AbstractQuery
 {
+    use HasOrganization;
+
     public function properties()
     {
         return [

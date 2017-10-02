@@ -9,12 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Claroline\API\Entity;
+namespace Claroline\API\Request\Entity;
 
 use Claroline\API\Request\AbstractQuery;
+use Claroline\API\Request\Model\HasOrganization;
+use Claroline\API\Request\Model\HasRole;
 
 class Group extends AbstractQuery
 {
+    use HasOrganization;
+    use HasRole;
+
     public function properties()
     {
         return [

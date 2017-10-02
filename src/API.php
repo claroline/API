@@ -15,7 +15,7 @@ class API
         $this->utilities = new Utilities();
         $this->managers = $this->utilities->instantiateDirectory(
           __DIR__ . '/Request/Entity',
-          [$this->routing, $this->host]
+          [$this->host]
         );
     }
 

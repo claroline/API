@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Claroline\API\Entity;
+namespace Claroline\API\Request\Entity;
 
 use Claroline\API\Request\AbstractQuery;
 

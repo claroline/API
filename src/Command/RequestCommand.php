@@ -36,8 +36,11 @@ class RequestCommand extends Command
         $api = new API($host);
         $manager = $api->getManager($name);
 
-        $data = $this->getObjectFromArgs($manager, $data);
-        $response = call_user_func_array([$manager, $action], [$data]);
+        if (in_array($action, ['create', 'update'])) {
+            $data = [$this->getObjectFromArgs($manager, $data)];
+        }
+
+        $response = call_user_func_array([$manager, $action], $data);
         $this->displayResponse($output, $response);
     }
 
@@ -46,7 +49,9 @@ class RequestCommand extends Command
         $obj = new \stdClass();
 
         foreach ($manager->properties() as $index => $prop) {
-            $obj->$prop = $args[$index];
+            if (isset($args[$index])) {
+                $obj->$prop = $args[$index];
+            }
         }
 
         return $obj;

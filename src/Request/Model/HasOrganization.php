@@ -13,18 +13,18 @@ namespace Claroline\API\Request\Model;
 
 use Claroline\API\Request\Request;
 
-trait HasRole
+trait HasOrganization
 {
-    public function addRole($objectId, $roleId)
+    public function addOrganization($objectId, $groupId)
     {
-        $request = new Request($this->endPoint.$objectId.'/role/add?ids[]='.$groupId, 'PATCH', $this->host);
+        $request = new Request($this->endPoint.$objectId.'/organization/add?ids[]='.$groupId, 'PATCH', $this->host);
 
         return $request->send();
     }
 
-    public function removeRole($objectId, $roleId)
+    public function removeOrganization($objectId, $groupId)
     {
-        $request = new Request($this->endPoint.$objectId.'/role/add?ids[]='.$groupId, 'PATCH', $this->host);
+        $request = new Request($this->endPoint.$objectId.'/organization/remove?ids[]='.$groupId, 'PATCH', $this->host);
 
         return $request->send();
     }

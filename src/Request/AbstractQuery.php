@@ -13,14 +13,12 @@ namespace Claroline\API\Request;
 
 abstract class AbstractQuery implements EntityInterface
 {
-    private $routing;
-    private $host;
-    private $apiPrefix;
-    private $endPoint;
+    protected $host;
+    protected $apiPrefix;
+    protected $endPoint;
 
-    public function __construct($routing, $host, $apiPrefix = 'apiv2')
+    public function __construct($host, $apiPrefix = 'apiv2')
     {
-        $this->routing   = $routing;
         $this->host      = $host;
         $this->apiPrefix = $apiPrefix;
         $this->endPoint  = $this->apiPrefix."/{$this->getNormalizedName()}/";
