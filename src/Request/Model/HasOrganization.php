@@ -15,16 +15,16 @@ use Claroline\API\Request\Request;
 
 trait HasOrganization
 {
-    public function addOrganization($objectId, $groupId)
+    public function addOrganization($objectId, $organizationId)
     {
-        $request = new Request($this->endPoint.$objectId.'/organization/add?ids[]='.$groupId, 'PATCH', $this->host);
+        $request = new Request($this->endPoint.$objectId.'/organization/add', 'PATCH', $this->host, ['ids' => [$organizationId]]);
 
         return $request->send();
     }
 
-    public function removeOrganization($objectId, $groupId)
+    public function removeOrganization($objectId, $organizationId)
     {
-        $request = new Request($this->endPoint.$objectId.'/organization/remove?ids[]='.$groupId, 'PATCH', $this->host);
+        $request = new Request($this->endPoint.$objectId.'/organization/remove', 'PATCH', $this->host, ['ids' => [$organizationId]]);
 
         return $request->send();
     }
