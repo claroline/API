@@ -17,14 +17,14 @@ trait HasOrganization
 {
     public function addOrganization($objectId, $organizationId)
     {
-        $request = new Request($this->endPoint.$objectId.'/organization/add', 'PATCH', $this->host, ['ids' => [$organizationId]]);
+        $request = new Request($this->endPoint.$objectId.'/organization', 'PATCH', $this->host, ['ids' => [$organizationId]]);
 
         return $request->send();
     }
 
     public function removeOrganization($objectId, $organizationId)
     {
-        $request = new Request($this->endPoint.$objectId.'/organization/remove', 'PATCH', $this->host, ['ids' => [$organizationId]]);
+        $request = new Request($this->endPoint.$objectId.'/organization', 'DELETE', $this->host, ['ids' => [$organizationId]]);
 
         return $request->send();
     }

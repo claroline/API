@@ -17,14 +17,14 @@ trait HasRole
 {
     public function addRole($objectId, $roleId)
     {
-        $request = new Request($this->endPoint.$objectId.'/role/add', 'PATCH', $this->host, ['ids' => [$roleId]]);
+        $request = new Request($this->endPoint.$objectId.'/role', 'PATCH', $this->host, ['ids' => [$roleId]]);
 
         return $request->send();
     }
 
     public function removeRole($objectId, $roleId)
     {
-        $request = new Request($this->endPoint.$objectId.'/role/remove', 'PATCH', $this->host, ['ids' => [$roleId]]);
+        $request = new Request($this->endPoint.$objectId.'/role', 'DELETE', $this->host, ['ids' => [$roleId]]);
 
         return $request->send();
     }
