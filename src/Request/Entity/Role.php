@@ -18,8 +18,8 @@ class Role extends AbstractQuery
     public function properties()
     {
         return [
-            'id',
-            'translationKey'
+            'id' => 'integer',
+            'translationKey' => 'string'
         ];
     }
 }

@@ -25,13 +25,13 @@ class User extends AbstractQuery
     public function properties()
     {
         return [
-          'id',
-          'firstName',
-          'lastName',
-          'username',
-          'plainPassword',
-          'administrativeCode',
-          'mail'
+          'id' => 'integer',
+          'firstName' => 'string',
+          'lastName' => 'string',
+          'username' => 'string',
+          'plainPassword' => 'string',
+          'administrativeCode' => 'string',
+          'mail' => 'string'
         ];
     }
 }

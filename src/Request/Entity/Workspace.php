@@ -21,9 +21,9 @@ class Workspace extends AbstractQuery
     public function properties()
     {
         return [
-          'id',
-          'code',
-          'name'
+          'id' => 'integer',
+          'code' => 'string',
+          'name' => 'string'
         ];
     }
 }

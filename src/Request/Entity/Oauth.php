@@ -20,10 +20,10 @@ class Oauth extends AbstractQuery
     public function properties()
     {
         return [
-          'id',
-          'oauthId',
-          'service',
-          'user' //any identifier will do
+          'id' => 'integer',
+          'oauthId' => 'string',
+          'service' => 'string',
+          'user' => 'object'
         ];
     }
 }

@@ -18,9 +18,9 @@ class Organization extends AbstractQuery
     public function properties()
     {
         return [
-            'id',
-            'name',
-            'email'
+            'id' => 'integer',
+            'name' => 'string',
+            'email' => 'string'
         ];
     }
 }

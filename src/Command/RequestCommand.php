@@ -47,11 +47,21 @@ class RequestCommand extends Command
     protected function getObjectFromArgs($manager, $args)
     {
         $obj = new \stdClass();
+        $properties = $manager->properties();
+        $i = 0;
 
-        foreach ($manager->properties() as $index => $prop) {
-            if (isset($args[$index])) {
-                $obj->$prop = $args[$index];
+        foreach ($manager->properties() as $prop => $type) {
+            if (isset($args[$i])) {
+                if ($type !== 'object') {
+                    $obj->$prop = $args[$i];
+                } else {
+                    $childObj = new \stdClass();
+                    $childObj->id = $args[$i];
+                    $obj->$prop = $childObj;
+                }
             }
+
+            $i++;
         }
 
         return $obj;

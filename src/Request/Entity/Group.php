@@ -23,8 +23,8 @@ class Group extends AbstractQuery
     public function properties()
     {
         return [
-          'id',
-          'name'
+          'id' => 'integer',
+          'name' => 'string'
         ];
     }
 }
