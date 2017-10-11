@@ -69,6 +69,7 @@ class RequestCommand extends Command
 
     protected function displayResponse(OutputInterface $output, $response)
     {
-        //echo $response;
+        echo $response->getHttpCode();
+        echo $response->getBody();
     }
 }

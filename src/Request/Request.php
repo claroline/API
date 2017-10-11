@@ -40,9 +40,9 @@ class Request
         }
 
         $data = curl_exec($ch);
-
+        $response = new Response($data, curl_getinfo($ch, CURLINFO_HTTP_CODE));
         curl_close($ch);
 
-        $response = new Response($data, curl_getinfo($ch, CURLINFO_HTTP_CODE));
+        return $response;
     }
 }
