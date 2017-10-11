@@ -36,7 +36,7 @@ class RequestCommand extends Command
         $api = new API($host);
         $manager = $api->getManager($name);
 
-        if (in_array($action, ['create', 'update'])) {
+        if (in_array($action, ['create', 'update', 'delete'])) {
             $data = [$this->getObjectFromArgs($manager, $data)];
         }
 
