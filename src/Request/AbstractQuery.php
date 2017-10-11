@@ -51,7 +51,7 @@ abstract class AbstractQuery implements EntityInterface
         return $request->send();
     }
 
-    public function delete($id)
+    public function delete($data)
     {
         $request = new Request($this->endPoint.'?ids[]='.$data->id, 'DELETE', $this->host);
 
