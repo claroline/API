@@ -39,12 +39,10 @@ class Request
             curl_setopt($ch, $option, $value);
         }
 
-        $response = curl_exec($ch);
+        $data = curl_exec($ch);
 
-        var_dump($options);
-        var_dump($response);
         curl_close($ch);
 
-        return $response;
+        $response = new Response($data, curl_getinfo($ch, CURLINFO_HTTP_CODE));
     }
 }
