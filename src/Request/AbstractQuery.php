@@ -21,7 +21,15 @@ abstract class AbstractQuery implements EntityInterface
     {
         $this->host      = $host;
         $this->apiPrefix = $apiPrefix;
-        $this->endPoint  = $this->apiPrefix."/{$this->getNormalizedName()}/";
+        $this->endPoint  = $this->apiPrefix."/{$this->getNormalizedName()}";
+    }
+
+    public function get(array $filters = [])
+    {
+        $queryString = ['filters' => $filters];
+        $request = new Request($this->endPoint . '/get', 'GET', $this->host, $queryString);
+
+        return $request->send();
     }
 
     public function list($page, $limit, array $filters = [])
@@ -46,7 +54,7 @@ abstract class AbstractQuery implements EntityInterface
 
     public function update($data)
     {
-        $request = new Request($this->endPoint.$data->id, 'PUT', $this->host, [], json_encode($data));
+        $request = new Request($this->endPoint.'/'.$data->id, 'PUT', $this->host, [], json_encode($data));
 
         return $request->send();
     }
