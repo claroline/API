@@ -17,14 +17,14 @@ trait HasGroup
 {
     public function addGroup($objectId, $groupId)
     {
-        $request = new Request($this->endPoint.$objectId.'/group', 'PATCH', $this->host, ['ids' => [$groupId]]);
+        $request = new Request($this->endPoint."/".$objectId.'/group', 'PATCH', $this->host, ['ids' => [$groupId]]);
 
         return $request->send();
     }
 
     public function removeGroup($objectId, $groupId)
     {
-        $request = new Request($this->endPoint.$objectId.'/group', 'DELETE', $this->host, ['ids' => [$groupId]]);
+        $request = new Request($this->endPoint."/".$objectId.'/group', 'DELETE', $this->host, ['ids' => [$groupId]]);
 
         return $request->send();
     }
