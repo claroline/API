@@ -32,6 +32,13 @@ abstract class AbstractQuery implements EntityInterface
         return $request->send();
     }
 
+    public function schema()
+    {
+        $request = new Request($this->endPoint . '/schema', 'GET', $this->host, []);
+
+        return $request->send();
+    }
+
     public function list($page, $limit, array $filters = [])
     {
         $queryString = [

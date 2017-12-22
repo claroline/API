@@ -21,17 +21,4 @@ class User extends AbstractQuery
     use HasGroup;
     use HasRole;
     use HasOrganization;
-
-    public function properties()
-    {
-        return [
-          'id' => 'integer',
-          'firstName' => 'string',
-          'lastName' => 'string',
-          'username' => 'string',
-          'plainPassword' => 'string',
-          'administrativeCode' => 'string',
-          'mail' => 'string'
-        ];
-    }
 }

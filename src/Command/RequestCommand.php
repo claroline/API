@@ -35,37 +35,46 @@ class RequestCommand extends Command
 
         $api = new API($host);
         $manager = $api->getManager($name);
+        $object = new \stdClass();
 
         if (in_array($action, ['create', 'update', 'delete'])) {
-            $data = [$this->getObjectFromArgs($manager, $data)];
+            foreach ($data as $property) {
+                $parts = explode('=', $property);
+                $this->set($object, $parts[0], $parts[1]);
+            }
         }
 
-        $response = call_user_func_array([$manager, $action], $data);
+        $response = call_user_func_array([$manager, $action], ['data' => $object]);
         $this->displayResponse($output, $response);
     }
 
-    protected function getObjectFromArgs($manager, $args)
-    {
-        $obj = new \stdClass();
-        $properties = $manager->properties();
-        $i = 0;
 
-        foreach ($manager->properties() as $prop => $type) {
-            if (isset($args[$i])) {
-                if ($type !== 'object') {
-                    $obj->$prop = $args[$i];
-                } else {
-                    $childObj = new \stdClass();
-                    $childObj->id = $args[$i];
-                    $obj->$prop = $childObj;
-                }
+    /**
+     * This is more or less the equivalent of lodash set for objects.
+     *
+     * @param &$object - the object
+     * @param $keys    - the property path
+     * @param value    - the property value
+     */
+    public function set(&$object, $keys, $value)
+    {
+        $keys = explode('.', $keys);
+        $depth = count($keys);
+        $key = array_shift($keys);
+
+        if ($depth === 1) {
+            $object->$key = $value;
+        } else {
+            if (!isset($object->$key)) {
+                $object->$key = new \stdClass();
+            } elseif (!is_array($object->$key)) {
+                throw new \Exception('Cannot set property because it already exists as a non \stdClass');
             }
 
-            $i++;
+            $this->set($object->$key, implode('.', $keys), $value);
         }
-
-        return $obj;
     }
+
 
     protected function displayResponse(OutputInterface $output, $response)
     {

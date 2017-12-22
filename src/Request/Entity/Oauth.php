@@ -17,13 +17,4 @@ use Claroline\API\Request\Model\HasRole;
 
 class Oauth extends AbstractQuery
 {
-    public function properties()
-    {
-        return [
-          'id' => 'integer',
-          'oauthId' => 'string',
-          'service' => 'string',
-          'user' => 'object'
-        ];
-    }
 }

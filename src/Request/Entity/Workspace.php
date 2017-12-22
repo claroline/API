@@ -17,13 +17,4 @@ use Claroline\API\Request\Model\HasOrganization;
 class Workspace extends AbstractQuery
 {
     use HasOrganization;
-
-    public function properties()
-    {
-        return [
-          'id' => 'integer',
-          'code' => 'string',
-          'name' => 'string'
-        ];
-    }
 }

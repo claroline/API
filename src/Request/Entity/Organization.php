@@ -15,12 +15,4 @@ use Claroline\API\Request\AbstractQuery;
 
 class Organization extends AbstractQuery
 {
-    public function properties()
-    {
-        return [
-            'id' => 'integer',
-            'name' => 'string',
-            'email' => 'string'
-        ];
-    }
 }

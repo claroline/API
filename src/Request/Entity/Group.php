@@ -19,12 +19,4 @@ class Group extends AbstractQuery
 {
     use HasOrganization;
     use HasRole;
-
-    public function properties()
-    {
-        return [
-          'id' => 'integer',
-          'name' => 'string'
-        ];
-    }
 }

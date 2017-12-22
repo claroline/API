@@ -15,11 +15,4 @@ use Claroline\API\Request\AbstractQuery;
 
 class Role extends AbstractQuery
 {
-    public function properties()
-    {
-        return [
-            'id' => 'integer',
-            'translationKey' => 'string'
-        ];
-    }
 }
