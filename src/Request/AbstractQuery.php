@@ -27,7 +27,7 @@ abstract class AbstractQuery implements EntityInterface
     public function get(array $filters = [])
     {
         $queryString = ['filters' => $filters];
-        $request = new Request($this->endPoint . '/get', 'GET', $this->host, $queryString);
+        $request = new Request($this->endPoint . '/find', 'GET', $this->host, $queryString);
 
         return $request->send();
     }
