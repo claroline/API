@@ -28,4 +28,11 @@ trait HasOrganization
 
         return $request->send();
     }
+    
+    public function listOrganizations($objectId)
+    {
+        $request = new Request($this->endPoint.'/'.$objectId.'/organization', 'GET', $this->host, []);
+
+        return $request->send();
+    }
 }
